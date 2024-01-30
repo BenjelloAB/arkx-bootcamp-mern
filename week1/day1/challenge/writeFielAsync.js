@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function wrtiteFileAsync(path, content) {
+function writeFileAsync(path, content) {
   return new Promise((resolve, reject) => {
     fs.writeFile(path, content, (err) => {
       if (err) {
@@ -12,7 +12,7 @@ function wrtiteFileAsync(path, content) {
   });
 }
 
-wrtiteFileAsync("test55.txt", "Hi there")
+writeFileAsync("test5sdfsdfsfdsd5.txt", "Hi there")
   .then(() => {
     console.log("worked just fine");
   })
@@ -22,11 +22,11 @@ wrtiteFileAsync("test55.txt", "Hi there")
 
 (async function main() {
   try {
-    await wrtiteFileAsync("test55.txt", "Hi there");
+    await writeFileAsync("test55.txt", "Hi there");
     console.log("Worked fine");
   } catch (err) {
     console.log("Wa lerror hwa : ", err.message);
   }
 })();
 
-module.exports = wrtiteFileAsync;
+module.exports = writeFileAsync;

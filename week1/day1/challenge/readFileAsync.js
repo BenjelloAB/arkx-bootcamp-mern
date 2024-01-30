@@ -2,23 +2,22 @@ const fs = require("fs");
 
 function readFileAsync(path) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, { encoding: "ascii" }, (err, data) => {
+    fs.readFile(path, "utf8" , (err, data) => {
       if (err) {
         reject(err);
-        return;
       }
       if (data) resolve(data);
     });
   });
 }
 
-// readFileAsync("test5asdsadas5.txt")
-//   .then((content) => {
-//     console.log(content);
-//   })
-//   .catch((err) => {
-//     console.log(err.message);
-//   });
+readFileAsync("test5dfgdfgfdf5.txt")
+  .then((content) => {
+    console.log(content);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 
 async function main()
@@ -34,5 +33,5 @@ async function main()
   }
 }
 
-main();
+main()
 module.exports = readFileAsync;
