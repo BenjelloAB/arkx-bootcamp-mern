@@ -20,6 +20,7 @@ async function processFiles(...files) {
     data = data.split(" ").concat(now).join(" ");
     try {
       await wrtiteFileAsync(files[i], data);
+      console.log(`${files[i]} has been updated`)
     } catch (err) {
      console.log(err);
     }
