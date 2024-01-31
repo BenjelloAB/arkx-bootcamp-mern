@@ -11,7 +11,7 @@ const fetchUserData = async () =>
         // console.log("data['users'] = ", data["users"].slice(0,7));
         // console.log("===========");
 
-        let {women_arr_str, women_arr} = await processUserData(data);
+        let {women_arr_str, women_arr} = processUserData(data);
         let sum_ages = summarizeAge(women_arr);
         console.log("Processed Users: ");
         for(let i = 0; i < women_arr_str.length; i++)
