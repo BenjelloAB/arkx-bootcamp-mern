@@ -2,12 +2,10 @@ const writeFileAsync = require("./writeFielAsync");
 const readFileAsync = require("./readFileAsync");
 const fs = require("fs");
 
-
 //! -- method1
 async function processFiles(...files) {
   for (let i = 0; i < files.length; i++) {
-
-//     //! checking if file exists
+    //     //! checking if file exists
     if (!fs.existsSync(files[i])) {
       console.log(`${files[i]} does not exist`);
       continue;
@@ -15,16 +13,13 @@ async function processFiles(...files) {
     let data = "";
     try {
       data = await readFileAsync(files[i]);
+
+      const now = new Date();
+      data = data.split(" ").concat(now).join(" ");
+      await writeFileAsync(files[i], data);
+      console.log(`${files[i]} has been updated`);
     } catch (err) {
       console.log(err);
-    }
-    const now = new Date();
-    data = data.split(" ").concat(now).join(" ");
-    try {
-      await writeFileAsync(files[i], data);
-      console.log(`${files[i]} has been updated`)
-    } catch (err) {
-     console.log(err);
     }
   }
 }
@@ -43,7 +38,7 @@ function processFiles1(...files) {
       .then((data) => {
         const now = new Date();
         read_data = data.split(" ").concat(now).join(" ");
-        console.log(read_data);
+        // console.log(read_data);
         writeFileAsync(file, read_data)
           .then(() => {
             console.log(`${file} has been updated`);
@@ -57,4 +52,4 @@ function processFiles1(...files) {
       });
   }
 }
-module.exports = {p1: processFiles1, p2: processFiles};
+module.exports = { p1: processFiles1, p2: processFiles };
