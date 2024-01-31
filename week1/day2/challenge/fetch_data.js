@@ -5,20 +5,18 @@ async function fetchUserData()
 {
     try{
         let res = await fetch("https://dummyjson.com/users");
-        // console.log("===========")
-        // console.log(`res = ${res.json()}`);
-        // console.log(`typeof res = ${typeof res}`);
-        // console.log("===========")
-        let data = await res.json()
-        console.log("===========")
-        console.log(`data ${data}`);
-        console.log("===========")
-        let processed_males = await processUserData(data);
-        let sum_ages = summarizeAge(processed_males);
+        let data = await res.json();
+        
+        console.log("==========");
+        console.log("data['users'] = ", data["users"].slice(0,7));
+        console.log("===========");
+
+        let {men, men_arr} = await processUserData(data);
+        let sum_ages = summarizeAge(men_arr);
         console.log("Processed Users: ");
-        for(let i = 0; i < processed_males.length; i++)
+        for(let i = 0; i < men.length; i++)
         {
-            console.log(`- ${processed_males[i]}`);
+            console.log(`- ${men[i]}`);
         }
         console.log(`Total Age of Active Users: ${sum_ages}`);
     }
