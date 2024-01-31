@@ -4,9 +4,9 @@ async function processUserData({users})
 {
     try{
         // console.log("data = ", data)
-        let male_users = users.filter(x => x.gender === "male");
-        let myman = male_users.map(({firstName, lastName, age})=> `Name: ${firstName} ${lastName}, Age: ${age}`);
-        return {men : myman, men_arr: male_users};
+        let women_users = users.filter(x => x.gender !== "male");
+        let formatted_women = women_users.map(({firstName, lastName, age})=> `Name: ${firstName} ${lastName}, Age: ${age}`);
+        return {women_arr_str: formatted_women, women_arr: women_users};
     }
     catch(err)
     {
