@@ -1,7 +1,7 @@
 const  processUserData = require("./process_data");
 const summarizeAge = require("./summarize_age");
 
-async function fetchUserData()
+const fetchUserData = async () =>
 {
     try{
         let res = await fetch("https://dummyjson.com/users");
@@ -11,12 +11,12 @@ async function fetchUserData()
         // console.log("data['users'] = ", data["users"].slice(0,7));
         // console.log("===========");
 
-        let {men_arr_str, men_arr} = await processUserData(data);
-        let sum_ages = summarizeAge(men_arr);
+        let {women_arr_str, women_arr} = await processUserData(data);
+        let sum_ages = summarizeAge(women_arr);
         console.log("Processed Users: ");
-        for(let i = 0; i < men_arr_str.length; i++)
+        for(let i = 0; i < women_arr_str.length; i++)
         {
-            console.log(`- ${men_arr_str[i]}`);
+            console.log(`- ${women_arr_str[i]}`);
         }
         console.log(`Total Age of Active Users: ${sum_ages}`);
     }

@@ -1,4 +1,4 @@
-function summarizeAge(arr) {
+const  summarizeAge = (arr) => {
   return arr.reduce((acc, { age }) => (acc += age), 0);
 }
 
