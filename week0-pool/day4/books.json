@@ -1,0 +1,218 @@
+[
+    {
+        "id": 1,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "description": "A story of wit, romance, and societal expectations in 19th-century England, following the Bennet sisters and their pursuit of love and marriage.",
+        "price": 9.99,
+        "genres": [
+            "Romance",
+            "Novel",
+            "Comedy"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "description": "A poignant coming-of-age story set in the Deep South during the 1930s, exploring prejudice, justice, and childhood innocence.",
+        "price": 12.50,
+        "genres": [
+            "Literature",
+            "Fiction",
+            "Historical"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez",
+        "description": "A magical realist masterpiece spanning generations, chronicling the Buendia family in the fictional town of Macondo.",
+        "price": 14.95,
+        "genres": [
+            "Magical Realism",
+            "Fiction",
+            "Historical"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "The Lord of the Rings",
+        "author": "J. R. R. Tolkien",
+        "description": "An epic fantasy saga following Frodo Baggins and his companions on their quest to destroy the One Ring.",
+        "price": 19.99,
+        "genres": [
+            "Fantasy",
+            "Adventure",
+            "Epic"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "description": "A gothic novel exploring the dangers of scientific ambition and the nature of good and evil.",
+        "price": 8.99,
+        "genres": [
+            "Science Fiction",
+            "Gothic",
+            "Horror"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "description": "A classic tragedy about revenge, betrayal, and madness, set in the royal court of Denmark.",
+        "price": 5.99,
+        "genres": [
+            "Drama",
+            "Tragedy",
+            "Literature"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "The Catcher in the Rye",
+        "author": "J. D. Salinger",
+        "description": "A coming-of-age story about Holden Caulfield, a cynical teenager grappling with alienation and loss.",
+        "price": 11.99,
+        "genres": [
+            "Literature",
+            "Fiction",
+            "Coming-of-Age"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "The Book Thief",
+        "author": "Markus Zusak",
+        "description": "A historical novel set in Nazi Germany, narrated by Death and following a young girl named Liesel Meminger who finds solace in books.",
+        "price": 13.49,
+        "genres": [
+            "Historical Fiction",
+            "War",
+            "Fiction"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "description": "A philosophical fable about a shepherd boy who travels from Spain to Egypt in search of treasure, discovering the true meaning of life along the way.",
+        "price": 9.49,
+        "genres": [
+            "Adventure",
+            "Philosophical",
+            "Fiction"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Animal Farm",
+        "author": "George Orwell",
+        "description": "A satirical novella that uses a farm inhabited by animals to critique Soviet totalitarianism and explore themes of power, corruption, and rebellion.",
+        "price": 7.99,
+        "genres": [
+            "Satire",
+            "Political",
+            "Allegory"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "The Handmaid's Tale",
+        "author": "Margaret Atwood",
+        "description": "A dystopian novel set in a near-future totalitarian society where women are subjugated and forced into reproductive servitude.",
+        "price": 14.99,
+        "genres": [
+            "Dystopian",
+            "Science Fiction",
+            "Feminist"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian novel about a totalitarian state where Big Brother controls every aspect of citizens' lives, exploring themes of surveillance, propaganda, and thought control.",
+        "price": 12.99,
+        "genres": [
+            "Dystopian",
+            "Science Fiction",
+            "Political"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "The Name of the Rose",
+        "author": "Umberto Eco",
+        "description": "A historical mystery novel set in a medieval monastery, featuring a blind monk named William of Baskerville who investigates a series of murders.",
+        "price": 15.99,
+        "genres": [
+            "Mystery",
+            "Historical Fiction",
+            "Religion"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "The Remains of the Day",
+        "author": "Kazuo Ishiguro",
+        "description": "A poignant novel about a butler named Stevens who reflects on his life and missed opportunities while serving in a grand English estate.",
+        "price": 10.99,
+        "genres": [
+            "Drama",
+            "Historical Fiction",
+            "Literature"
+        ]
+    },
+    {
+        "id": 16,
+        "title": "The God of Small Things",
+        "author": "Arundhati Roy",
+        "description": "A lyrical novel set in Kerala, India, exploring themes of love, loss, and caste in a family saga spanning generations.",
+        "price": 14.49,
+        "genres": [
+            "Literary Fiction",
+            "Family Saga",
+            "Social Commentary"
+        ]
+    },
+    {
+        "id": 17,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "description": "A classic novel of the Jazz Age, depicting the tragic story of Jay Gatsby, a mysterious millionaire, and his obsession with Daisy Buchanan.",
+        "price": 10.99,
+        "genres": [
+            "Novel",
+            "Tragedy",
+            "Fiction"
+        ]
+    },
+    {
+        "id": 18,
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez",
+        "description": "A magical realist masterpiece spanning generations, chronicling the Buendia family in the fictional town of Macondo.",
+        "price": 14.95,
+        "genres": [
+            "Magical Realism",
+            "Fiction",
+            "Historical"
+        ]
+    },
+    {
+        "id": 19,
+        "title": "The Wind in the Willows",
+        "author": "Kenneth Grahame",
+        "description": "A charming children's novel about the adventures of four animal friends - Mole, Ratty, Badger, and Toad - along the idyllic River Thames.",
+        "price": 8.99,
+        "genres": [
+            "Children's Literature",
+            "Adventure",
+            "Fantasy"
+        ]
+    }
+]
