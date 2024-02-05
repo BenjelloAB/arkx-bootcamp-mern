@@ -1,8 +1,9 @@
 const { p1, p2 } = require("./process_files");
 
-function main() {
+async function main() {
   try {
-    p2("./test.txt", "test2.txt", "test55.txt");
+    await p2("./test.txt", "test2.txt", "test55.txt");
+    console.log("All the files have been processed successfully");
   } catch (err) {
     console.log(err);
   }
