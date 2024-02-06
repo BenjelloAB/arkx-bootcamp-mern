@@ -20,6 +20,7 @@ async function processFiles(...files) {
       console.log(`${files[i]} has been updated`);
     } catch (err) {
       console.log(err);
+      throw err;
     }
   }
 }
@@ -49,6 +50,7 @@ function processFiles1(...files) {
       })
       .catch((err) => {
         console.log(err);
+        throw err;
       });
   }
 }

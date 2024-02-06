@@ -1,12 +1,12 @@
 const fetchUserData = require("./fetch_data");
 
-(function main()
+async function main()
 {
     try{
-        fetchUserData();
+        await fetchUserData();
     }catch(err){
         console.log(err.message);
     }
 }
 
-)();
+main();
