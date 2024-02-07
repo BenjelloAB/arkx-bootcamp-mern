@@ -40,11 +40,6 @@ const check_phone = (phone: string): boolean => {
 async function check_name_phone(falsy_name: string, falsy_phone: string): Promise<Contact> {
 
     while (check_name(falsy_name) || check_phone(falsy_phone)) {
-
-        // if (!check_phone(falsy_phone))
-        //     console.log("Invalid phone Number");
-        // if (!check_name(falsy_name))
-        //     console.log("Invalid Name");
         console.log("Invalid Name or Phone Number");
         falsy_name = await ask("Enter Name :\n");
         falsy_phone = await ask("Enter Phone :\n");
@@ -164,9 +159,6 @@ async function keep_asking() {
                         console.log("No Contacts are available");
                     else {
                         console.log("===Contacts===");
-                        // for (let i = 0; i < real_data.length; i++) {
-                        //     console.log(`name : ${real_data[i].name}, phone: ${real_data[i].phone}`)
-                        // }
                         real_data.forEach(x => {
                             console.log(`name : ${x.name}, phone: ${x.phone}`)
                         })
