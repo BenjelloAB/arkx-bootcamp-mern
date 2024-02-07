@@ -126,7 +126,7 @@ async function keep_asking() {
             case "add":
                 let name: string = "";
                 let phone: string = "";
-                 
+                name = await ask("Enter Name :\n")
                 phone = await ask("Enter Phone :\n")
                 if (check_name(name) || check_phone(phone)) {
                     let valid_data: Contact = { name: "", phone: "" };
@@ -150,18 +150,6 @@ async function keep_asking() {
                     if (real_data.length === 0)
                         console.log("No Contacts are available");
                     else {
-                        // let found: Contact = { name: "", phone: "" };
-                        // let flag: number = 0;
-                        // for (let i = 0; i < real_data.length; i++) {
-                        //     if (real_data[i].name === answer.split(" ").slice(1).join(" ")) {
-                        //         found = real_data[i]
-                        //         console.log(`name : ${found.name}, phone: ${found.phone}`)
-                        //         flag = 1;
-                        //         break;
-                        //     }
-                        // }
-                        // if (flag === 0)
-                        //     console.log("Not Found");
                         find_contact_1(real_data, answer.split(" ").slice(1).join(" "));
                     }
                 } catch (err) {
