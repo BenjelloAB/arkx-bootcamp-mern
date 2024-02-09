@@ -14,9 +14,9 @@ function construct_link({ lat, lng }) {
 
 async function readFileAsync(filePath) {
   return new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, data) => {
+    fs.readFile(filePath, {encoding: "utf8"}, (err, data) => {
       if (err) reject(err);
-      else resolve(data.toString("utf8"));
+      else resolve(data);
     });
   });
 }
