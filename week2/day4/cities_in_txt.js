@@ -48,7 +48,7 @@ async function tempFileCreator(filePath) {
     await fillInputFile(cities);
     const cityName = await readFileAsync(filePath);
     console.log(cityName);
-    const cityFilePath = `${cityName}.txt`;
+    const cityFilePath = `${cityName.split(" ").join("")}.txt`;
     console.log(cityFilePath);
 
     // if (fs.existsSync(cityFilePath)) await deleteAsync(cityFilePath);
