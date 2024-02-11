@@ -30,10 +30,44 @@ function searchEvents(_a) {
 }
 var enrolledEvents = [];
 function enroll(event) {
-    enrolledEvents = __spreadArray(__spreadArray([], enrolledEvents, true), [event], false);
+    enrolledEvents = __spreadArray(__spreadArray([], enrolledEvents, true), event, true);
+}
+function drop_enrolled_event(_a) {
+    var query = _a.query, eventType = _a.eventType;
+    var index = -1;
+    var i;
+    for (i = 0; i < enrolledEvents.length; i++) {
+        if (typeof query === "string"
+            && enrolledEvents[i].keywords.includes(query)
+            && enrolledEvents[i].eventType === eventType) {
+            index = i;
+            break;
+        }
+        if (typeof query === "number"
+            && enrolledEvents[i].id === query
+            && enrolledEvents[i].eventType === eventType) {
+            index = i;
+            break;
+        }
+    }
+    console.log(typeof query === "number");
+    console.log(enrolledEvents[0].id === query);
+    console.log(enrolledEvents[0].eventType === eventType);
+    console.log("index :", index);
+    enrolledEvents.splice(index, 1);
+}
+function print_only_titles() {
+    console.log("==Enrolled Events Titles==");
+    enrolledEvents.forEach(function (x) {
+        console.log(x.title);
+    });
 }
 console.log(searchEvents({ query: "art", eventType: "courses" }));
-enroll(searchEvents({ query: 1, eventType: "courses" })[0]);
-enroll(searchEvents({ query: 2, eventType: "courses" })[0]);
+enroll(searchEvents({ query: 1, eventType: "courses" }));
+enroll(searchEvents({ query: 2, eventType: "courses" }));
 console.log("==enrolledEvents==");
 console.log(enrolledEvents);
+drop_enrolled_event({ query: 1, eventType: "course" });
+console.log("==enrolledEvents After==");
+console.log(enrolledEvents);
+print_only_titles();
