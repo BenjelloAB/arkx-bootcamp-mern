@@ -66,7 +66,7 @@ async function updatePost(req, res, next) {
     else {
       //   post_arr[post_index] = {
       //     ...post_arr[post_index],
-      //     author: author,
+      //     author: author ? author,
       //     title: title,
       //     description: description,
       //     text: text,
