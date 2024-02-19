@@ -1,5 +1,7 @@
 const { getAllPosts, createPost } = require("../models/post");
-const path = "./posts.json";
+// const path = "./posts.json";
+const path = "./week-challenge-blog/posts.json";
+
 const fs = require("fs").promises;
 
 async function getPosts(req, res, next) {
@@ -66,9 +68,9 @@ async function updatePost(req, res, next) {
     else {
       //   post_arr[post_index] = {
       //     ...post_arr[post_index],
-      //     author: author ? author,
-      //     title: title,
-      //     description: description,
+      //     author: author ? author : post_arr[post_index].author,
+      //     title: title ? title : post_arr[post_index].title,
+      //     description: description ? description : post_arr[],
       //     text: text,
       //   };
 
@@ -109,9 +111,6 @@ async function deletePost(req, res, next) {
   }
 }
 
-// function handleError(err, req, res) {
-//   res.status(404).json(err.message);
-// }
 
 module.exports = {
   getPosts,

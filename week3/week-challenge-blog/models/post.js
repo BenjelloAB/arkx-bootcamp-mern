@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 
-const path = "./posts.json";
+const path = "./week-challenge-blog/posts.json";
 
 async function getAllPosts() {
   try {
