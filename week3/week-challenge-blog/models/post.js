@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const { RequestError, NotFoundError } = require("../customErrors");
 
 const path = "./posts.json";
 
@@ -6,8 +7,10 @@ async function deletePost(postId) {
   try {
     let posts_arr = await getAllPosts();
     let post_index = posts_arr.findIndex((p) => p.id === postId);
-    if (post_index === -1) throw new Error("No Post is Found with that id");
+    if (post_index === -1)
+      throw new NotFoundError("No Post is Found with that id");
     let p = posts_arr.splice(post_index, 1);
+
     await fs.writeFile(path, JSON.stringify({ posts: posts_arr }));
     return p;
   } catch (err) {
@@ -18,7 +21,8 @@ async function updatePost(postId, data) {
   try {
     let post_arr = await getAllPosts();
     let post_index = post_arr.findIndex((p) => p.id === postId);
-    if (post_index === -1) throw new Error("No Post is Found with that id");
+    if (post_index === -1)
+      throw new NotFoundError("No Post is Found with that id");
 
     post_arr[post_index] = { ...post_arr[post_index], ...data };
     await fs.writeFile(path, JSON.stringify({ posts: post_arr }));
@@ -31,12 +35,6 @@ async function updatePost(postId, data) {
 async function createPost(body) {
   try {
     let posts_arr = await getAllPosts();
-    let { author, title, description, text } = body;
-    if (!author || !title || !description || !text)
-      throw new Error(
-        "format: {author, title, description, text } is reuqired, some key(s) are missing"
-      );
-
     let id =
       posts_arr.reduce(
         (acc, curr) => (acc < curr.id ? curr.id : acc),
@@ -55,7 +53,8 @@ async function getAllPosts() {
   try {
     let data = await fs.readFile(path, { encoding: "utf-8" });
     let p_obj = JSON.parse(data);
-    if (p_obj.posts.length === 0) throw new Error("No Posts are Available");
+    if (p_obj.posts.length === 0)
+      throw new NotFoundError("No Posts are Available");
     else return p_obj.posts;
   } catch (err) {
     throw err;
