@@ -4,10 +4,11 @@ const router = express.Router();
 const postControllers = require("../controllers/postController");
 
 
+// router.use(postControllers.logger);
 
 router.get("/posts", postControllers.getPosts);
 
-router.post("/posts/create", postControllers.create_Post);
+router.post("/posts", postControllers.create_Post);
 
 router.get("/posts/:id", postControllers.findPost);
 
