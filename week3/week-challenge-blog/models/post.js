@@ -17,7 +17,7 @@ async function getAllPosts() {
 }
 
 function createPost(author, title, text, desc) {
-  return ;
+  return { author: author, title: title, text: text, description: desc };
 }
 
 
