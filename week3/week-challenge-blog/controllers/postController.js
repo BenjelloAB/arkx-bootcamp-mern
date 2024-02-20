@@ -39,7 +39,7 @@ async function create(req, res, next) {
       throw new RequestError(
         "format: {author, title, description, text } is reuqired, some key(s) are missing"
       );
-    let post = await createPost(req.body);
+    let post = await createPost({author:author , title:title, description:description, text:text});
     res.json(post);
   } catch (err) {
     next(err);
