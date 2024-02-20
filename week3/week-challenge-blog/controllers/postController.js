@@ -60,7 +60,7 @@ async function create_Post(req, res, next) {
 async function updatePost(req, res, next) {
   try {
     let id = Number(req.params.id);
-    let { author, title, description, text } = req.body;
+    // let { author, title, description, text } = req.body;
 
     let post_arr = await getAllPosts();
     let post_index = post_arr.findIndex((p) => p.id === id);
@@ -74,19 +74,20 @@ async function updatePost(req, res, next) {
       //     text: text,
       //   };
 
-      if (author) {
-        post_arr[post_index].author = author;
-      }
-      if (title) {
-        post_arr[post_index].title = title;
-      }
-      if (description) {
-        post_arr[post_index].description = description;
-      }
-      if (text) {
-        post_arr[post_index].text = text;
-      }
+      // if (author) {
+      //   post_arr[post_index].author = author;
+      // }
+      // if (title) {
+      //   post_arr[post_index].title = title;
+      // }
+      // if (description) {
+      //   post_arr[post_index].description = description;
+      // }
+      // if (text) {
+      //   post_arr[post_index].text = text;
+      // }
 
+      post_arr[post_index] = { ...post_arr[post_index], ...req.body };
       await fs.writeFile(path, JSON.stringify({ posts: post_arr }));
       res.json(post_arr[post_index]);
     }
@@ -111,6 +112,18 @@ async function deletePost(req, res, next) {
   }
 }
 
+// function handleError(err, req, res, next)
+// {
+//   res.status(400).json(err.message);
+// }
+
+// function logger(req, res, next)
+// {
+//   const now = new Date().toString()
+//   console.log(req.method+" "+req.path+" "+now);
+//   next();
+
+// }
 
 module.exports = {
   getPosts,
