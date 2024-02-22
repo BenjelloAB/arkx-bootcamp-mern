@@ -1,0 +1,17 @@
+{
+    "name": "secure-node-app",
+    "version": "1.0.0",
+    "description": "Sample Node.js application for security challenge",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cookie-parser": "^1.4.6",
+        "csurf": "^1.11.0",
+        "ejs": "^3.1.9",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2"
+    }
+}
