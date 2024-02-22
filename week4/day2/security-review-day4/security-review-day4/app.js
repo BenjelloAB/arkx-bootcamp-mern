@@ -8,13 +8,6 @@ const path = require("path");
 
 const app = express();
 function isAuthtenticated(req, res, next) {
-  // const authHeader = req.headers["authorization"];
-  // console.log(authHeader);
-
-  // if (!authHeader) {
-  //   return res.status(401).json({ message: "Unauthenticated" });
-  // }
-  // Bearer token
   const token = req.cookies.token;
   console.log(token);
   if (!token) {
