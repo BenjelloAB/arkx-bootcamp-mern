@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const csurf = require("csurf");
+const { validationResult } = require("express-validator");
 
 const app = express();
 
@@ -44,6 +45,12 @@ app.post(
     // Implement appropriate validation and secure authentication mechanisms here
     // For simplicity, you can use a hardcoded username and password for demonstration purposes
 
+    //! added user input validation
+    let errors = validationResult(req);
+    if(!errors.isEmpty())
+    {
+      res.status(400).json({errors: errors.array()})
+    }
     const { username, password } = req.body;
 
     if (username === "admin" && password === "password") {
