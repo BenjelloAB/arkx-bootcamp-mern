@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const csurf = require("csurf");
 const { validationResult, body } = require("express-validator");
 const path = require("path");
+require('dotenv').config()
+
+
 
 const app = express();
 function isAuthtenticated(req, res, next) {
@@ -19,6 +22,7 @@ function isAuthtenticated(req, res, next) {
   }
   req.user = user;
   next();
+
 }
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -31,15 +35,19 @@ app.use(
     resave: false,
     saveUninitialized: false,
   })
-);
-app.set("views", path.join(__dirname, "views"));
-// app.set("views", "./views");
-app.set("view engine", "ejs");
-app.use(express.static("public"));
+  );
+  app.set("views", path.join(__dirname, "views"));
+  // app.set("views", "./views");
+  app.set("view engine", "ejs");
+  app.use(express.static("public"));
+  
+  
+  const KEY = process.env.KEY;
 
-//! added custom error handler for BAD CSRF TOKENS
-app.use(function (err, req, res, next) {
-  if (err.code !== "EBADCSRFTOKEN") return next(err);
+  console.log(KEY);
+  //! added custom error handler for BAD CSRF TOKENS
+  app.use(function (err, req, res, next) {
+    if (err.code !== "EBADCSRFTOKEN") return next(err);
   res.status(403);
   res.send("Invalid CSRF token");
 });
