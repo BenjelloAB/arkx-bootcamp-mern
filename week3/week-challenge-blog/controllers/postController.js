@@ -5,6 +5,7 @@ const {
   createPost,
   updatePost,
   deletePost,
+
 } = require("../models/post");
 
 async function getAll(req, res, next) {
@@ -50,8 +51,8 @@ async function update(req, res, next) {
   try {
     let id = req.params.id;
     if (isNaN(id)) throw new RequestError("Invalid id (must be a number)");
-    let phone = await updatePost(Number(id), req.body);
-    res.json(phone);
+    let post = await updatePost(Number(id), req.body);
+    res.json(post);
   } catch (err) {
     next(err);
   }
