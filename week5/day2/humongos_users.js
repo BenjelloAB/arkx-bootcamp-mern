@@ -10,29 +10,29 @@ const {
   try {
     var { User, client } = await setup();
     //testing creation
-    // await createUser(User, "Mike Ross", "mike.ross@arkx.group", 30);
-    // await createUser(User, "jhon Marston", "jhon.Marston@arkx.group", 35);
-    // await createUser(User, "ahmed jay", "ahmed.jay@arkx.group");
+    await createUser(User, "Mike Ross", "mike.ross@arkx.group", 30);
+    await createUser(User, "jhon Marston", "jhon.Marston@arkx.group", 35);
+    await createUser(User, "ahmed jay", "ahmed.jay@arkx.group");
 
     //testing fetchUsers
-    // const users = await fetchUsers(User)
-    // console.log(users)
+    const users = await fetchUsers(User)
+    console.log(users)
 
     //testing fetchUser
-    // const user = await fetchUser(User, "Mike Ross", "mike.ross@arkx.group")
-    // console.log(user)
+    const user = await fetchUser(User, "Mike Ross", "mike.ross@arkx.group")
+    console.log(user)
 
     //testing update
-    const user = await updateEmail(
+    const user_ = await updateEmail(
       User,
       "Mike Ross",
-      "mike.ross99@arkx.group",
-      "mike.ross@arkx.group"
+      "mike.ross@arkx.group",
+      "adin.ross@arkx.group"
     );
-    console.log(user);
+    console.log(user_);
 
     //testing delete
-    // await deleteBeforeDate(User, Date.now())
+    await deleteBeforeDate(User, Date.now())
 
     client.close();
   } catch (err) {
