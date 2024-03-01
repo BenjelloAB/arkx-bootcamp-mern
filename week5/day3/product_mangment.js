@@ -31,8 +31,9 @@ async function main() {
 
     const ProductModel = mongoose.model("Product", ProductSchema);
     //!inserting some dummy products
-    // await ProductModel.insertMany(products);
-
+    await ProductModel.insertMany(products);
+    const info = await ProductModel.deleteMany({})
+    console.log("prodcuts deleted successfully : ["+ info.deletedCount + "]");
 
     //! sorting desc:
     const product_sorted = await ProductModel.find().sort({ price: -1 });
@@ -54,13 +55,16 @@ async function main() {
     //!Aggreation Count porducts in stock
     const c = await ProductModel.aggregate([
       {
-        $group: {
-          _id: "",
-          count: { $sum: "$price" },
-        },
+        $match: { inStock: { $eq: true } },
+      },
+      {
+        $count: "stocked_products",
       },
     ]);
-    console.log(c[0].count);
+    console.log(c)
+    if (c.length === 0)
+      console.log("No Products Are Available in Stock");
+    else console.log(c[0].stocked_products);
 
     //! Sort by name asc:
     const prods_ = await ProductModel.aggregate([
@@ -70,10 +74,10 @@ async function main() {
     ]);
     console.log(prods_)
 
-    client.close()
+    client.close();
   } catch (err) {
     console.log(err.message);
-    client.close()
+    client.close();
   }
 }
 

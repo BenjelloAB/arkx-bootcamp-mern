@@ -53,17 +53,27 @@ async function countProds(Model) {
     throw err;
   }
 }
+
+async function deleteAll(Model) {
+  try {
+    const info = await Model.deleteMany({});
+    return info;
+  } catch (err) {
+    throw err;
+  }
+}
 async function countProdsAgg(Model) {
   try {
     const c = await Model.aggregate([
       {
-        $group: {
-          _id: null,
-          totalCount: { $sum: 1 },
-        },
+        $match: { inStock: { $eq: true } },
+      },
+      {
+        $count: "stocked_products",
       },
     ]);
-    return c[0].totalCount;
+    if (c.length === 0) throw new Error("No Products Are Available in Stock");
+    return c[0].stocked_products;
   } catch (err) {
     throw err;
   }
@@ -153,5 +163,6 @@ module.exports = {
   countProds,
   updateProduct,
   dynamicPagination,
+  deleteAll,
   avgPrices,
 };

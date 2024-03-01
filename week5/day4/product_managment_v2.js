@@ -10,6 +10,7 @@ const {
   sortCollectionWAggregate,
   countProdsAgg,
   countProds,
+  deleteAll,
   updateProduct,
   dynamicPagination,
   avgPrices,
@@ -53,13 +54,9 @@ async function main() {
     const sortedProducts = await sortCollection("price", ProductModel, -1);
     console.log(sortedProducts);
 
-    //!Agg Count porducts in stock:  works
+    // //!Agg Count porducts in stock:  works
     const count_ = await countProdsAgg(ProductModel);
     console.log("The Number of Products is : ", count_);
-
-    // //! Count porducts in stock : works
-    const count = await countProds(ProductModel);
-    console.log("The Number of Products is : ", count);
 
     //! calculate average prices : works
     const avg = await avgPrices(ProductModel);
@@ -102,9 +99,14 @@ async function main() {
     const { numDeleted } = await outOfStockBulkDel(ProductModel);
     console.log("Number of deleted items : ", numDeleted);
 
+    //! delete Everything
+    const info = await deleteAll(ProductModel);
+    console.log(info);
+
+
     client.close();
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     client.close();
   }
 }
