@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const csurf = require("csurf");
-const { validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 const app = express();
 
@@ -65,6 +65,7 @@ app.post(
 app.get("/dashboard", (req, res) => {
   // Secure the dashboard route to only allow authenticated users
   if (req.session.isAuthenticated) {
+    console.log(req.session)
     res.render("dashboard");
   } else {
     res.redirect("/");

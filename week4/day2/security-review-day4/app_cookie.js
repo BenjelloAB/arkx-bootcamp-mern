@@ -14,12 +14,19 @@ function isAuthtenticated(req, res, next) {
   if (!token) {
     return res.status(401).json({ message: "Unauthenticated" });
   }
-  const user = jwt.verify(token, "secret");
-  if (!user) {
-    return res.status(403).json({ message: "Unauthenticated" });
-  }
-  req.user = user;
-  next();
+  // const user = jwt.verify(token, "secret");
+  let user = "";
+  // console.log(token);
+  jwt.verify(token, "secret", (err, decoded) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("decoded");
+      console.log(decoded);
+      req.user = decoded;
+      next();
+    }
+  });
 }
 // Middleware
 app.use(express.urlencoded({ extended: false }));
