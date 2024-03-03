@@ -49,13 +49,7 @@ async function login(req, res, next) {
       { name: userName, email: userEmail },
       process.env.SECRET
     );
-    res.cookie("token", token, { httpOnly: true});
-    // res.setHeader(
-    //   "Set-Cookie",
-    //   `token=${token}; Expires=${new Date(
-    //     Date.now() + 900000
-    //   ).toUTCString()}; HttpOnly; Secure`
-    // );
+    res.cookie("token", token, { httpOnly: true, maxAge: 90000000});
     res.json({ token: token });
   } catch (err) {
     next(err);

@@ -23,6 +23,7 @@ const nonStrictSanitization = [
   body("title").trim().escape(),
   body("text").trim().escape(),
   body("description").trim().escape(),
+  body("categories.*").trim().escape(),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -49,6 +50,8 @@ const strictValidationSanitization = [
     .withMessage("description field is required")
     .trim()
     .escape(),
+    body('categories').isArray().withMessage('Categories must be an array'),
+    body("categories.*").not().isEmpty().withMessage('Category name cannot be empty').trim().escape(),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

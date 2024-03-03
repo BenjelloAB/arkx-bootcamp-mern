@@ -1,3 +1,4 @@
+const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const url = "mongodb://127.0.0.1:27017/mydb";
 
@@ -13,11 +14,11 @@ async function setup() {
         email: { type: String, required: true, unique: true },
         age: { type: Number },
         createdAt: { type: Date, default: Date.now },
-      });
+      }
+      );
   
       // creating a model
       const User = mongoose.model("User", userSchema);
-  
       return { User: User, client: client };
     } catch (err) {
       console.log(err.message);

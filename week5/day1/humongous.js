@@ -1,6 +1,6 @@
-const { MongoClient } = require("mongodb");
-const url = "mongodb://127.0.0.1:27017";
-const client = new MongoClient(url);
+const mongodb = require("mongodb");
+const url = "mongodb://localhost:27017";
+const client = new mongodb.MongoClient(url)
 
 // MongoClient.connect(url)
 // .then( client =>{
@@ -15,9 +15,10 @@ const client = new MongoClient(url);
 
 // client
 //   .connect()
-//   .then((c) => {
+//   .then(() => {
+
 //     console.log("Connected to db");
-//     console.log(c)
+//     console.log()
 //   })
 //   .catch((err) => {
 //     console.log("Err : ", err);

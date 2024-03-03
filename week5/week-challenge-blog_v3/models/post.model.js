@@ -3,6 +3,10 @@ const fs = require("fs").promises;
 const { RequestError, NotFoundError } = require("../customErrors");
 const mongoose = require("mongoose");
 
+// Custom validation function to limit the number of categories
+function arrayLimit(val) {
+  return val.length <= 5;
+}
 // console.log(process.env.MONGO_URI);
 const BlogSchema = new mongoose.Schema(
   {
@@ -10,6 +14,11 @@ const BlogSchema = new mongoose.Schema(
     title: { type: String, required: true },
     text: { type: String, required: true },
     description: { type: String, required: true },
+    categories: {
+      type: [{ name: { type: String, required: true , unique: true} }],
+      required: true,
+      validate: [arrayLimit, "{PATH} exceeds the limit of 5"],
+    },
   },
   {
     timestamps: true,
@@ -17,8 +26,6 @@ const BlogSchema = new mongoose.Schema(
 );
 // BlogSchema.pre()
 const Blog = mongoose.model("Blog", BlogSchema);
-
-
 
 async function deletePost(postId) {
   try {
@@ -31,7 +38,7 @@ async function deletePost(postId) {
 }
 async function deleteAllPosts() {
   try {
-    const info =await  Blog.deleteMany()
+    const info = await Blog.deleteMany();
     return info;
   } catch (err) {
     throw err;
@@ -52,7 +59,7 @@ async function updatePost(postId, updatedData) {
   try {
     const updatedBlog = await Blog.findByIdAndUpdate(
       postId,
-      { $set: updatedData},
+      { $set: updatedData },
       { new: true }
     );
     if (!updatedBlog) throw new NotFoundError("Blog Not Found");
@@ -86,5 +93,5 @@ module.exports = {
   updatePost,
   deletePost,
   findPost,
-  deleteAllPosts
+  deleteAllPosts,
 };

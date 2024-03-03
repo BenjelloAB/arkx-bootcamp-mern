@@ -4,12 +4,15 @@ const validateAndSanitizeRegister = [
   body("name")
     .exists()
     .withMessage("name field is required ")
+    .bail()
     .isLength({ min: 3 })
+    .withMessage("Min length is 3")
     .trim()
     .escape(),
   body("email")
     .exists()
     .withMessage("email field is required ")
+    .bail()
     .isEmail()
     .withMessage("Enter a valid email address")
     .trim()
@@ -17,7 +20,9 @@ const validateAndSanitizeRegister = [
   body("password")
     .exists()
     .withMessage("password field is required ")
+    .bail()
     .isLength({ min: 8 })
+    .withMessage("Min length is 8")
     .trim()
     .escape(),
   (req, res, next) => {
@@ -27,7 +32,12 @@ const validateAndSanitizeRegister = [
         .array()
         .map((error) => error.msg)
         .join(", ");
-      return res.status(400).send(`Bad request: ${errorMessages}`);
+      // return res.status(400).send(`Bad request: ${errorMessages}`);
+      return next(
+        new RequestError(
+          JSON.stringify({ errors: `Bad request: ${errorMessages}` })
+        )
+      );
     }
     next();
   },
@@ -37,6 +47,7 @@ const validateAndSanitizeLogin = [
   body("email")
     .exists()
     .withMessage("email field is required ")
+    .bail()
     .isEmail()
     .withMessage("Enter a valid email address")
     .trim()
@@ -44,7 +55,9 @@ const validateAndSanitizeLogin = [
   body("password")
     .exists()
     .withMessage("password field is required ")
+    .bail()
     .isLength({ min: 8 })
+    .withMessage("Min length is 8")
     .trim()
     .escape(),
   (req, res, next) => {
@@ -54,7 +67,12 @@ const validateAndSanitizeLogin = [
         .array()
         .map((error) => error.msg)
         .join(", ");
-      return res.status(400).send(`Bad request: ${errorMessages}`);
+      // return res.status(400).send(`Bad request: ${errorMessages}`);
+      return next(
+        new RequestError(
+          JSON.stringify({ errors: `Bad request: ${errorMessages}` })
+        )
+      );
     }
     next();
   },
@@ -68,7 +86,11 @@ const validateId = [
         .array()
         .map((error) => error.msg)
         .join(", ");
-      return res.status(400).send(`Bad request: ${errorMessages}`);
+      return next(
+        new RequestError(
+          JSON.stringify({ errors: `Bad request: ${errorMessages}` })
+        )
+      );
     }
     //   return res.status(400).json({ errors: errors.array() });
     //   return next(new RequestError(JSON.stringify({ errors: errors.array() })));

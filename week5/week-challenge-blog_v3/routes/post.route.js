@@ -7,26 +7,37 @@ const {
 } = require("../middleware/validation_blogs");
 
 const {
-  isAuthenticated, 
-  validateToken
-} = require("../middleware/authentication")
+  isAuthenticated,
+  validateToken,
+} = require("../middleware/authentication");
 const postControllers = require("../controllers/post.controller");
 
-router.get("/", validateToken , postControllers.getAll);
+router.get("/", validateToken, postControllers.getAll);
 
 //crete post
-router.post("/", strictValidationSanitization, postControllers.create);
+router.post(
+  "/",
+  validateToken,
+  strictValidationSanitization,
+  postControllers.create
+);
 
 //delete all posts
-router.delete("/", postControllers.deleteAll);
+router.delete("/", validateToken, postControllers.deleteAll);
 
 //find by id
-router.get("/:id", validateId, postControllers.findIt);
+router.get("/:id", validateToken, validateId, postControllers.findIt);
 
 //update by id
-router.put("/:id", validateId, nonStrictSanitization, postControllers.update);
+router.put(
+  "/:id",
+  validateToken,
+  validateId,
+  nonStrictSanitization,
+  postControllers.update
+);
 
 //delete post by id
-router.delete("/:id", validateId, postControllers.deleteIt);
+router.delete("/:id", validateToken, validateId, postControllers.deleteIt);
 
 module.exports = router;

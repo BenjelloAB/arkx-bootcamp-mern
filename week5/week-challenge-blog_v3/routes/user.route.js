@@ -8,12 +8,16 @@ const {
   isAuthenticated,
   validateToken,
 } = require("../middleware/authentication");
-const { register, findIt, login } = require("../controllers/user.controller");
-// router.get("/login")
-router.post("/login", isAuthenticated, login);
 
-// router.get("/register")
-router.post("/register" , isAuthenticated, register);
+
+const { register, findIt, login } = require("../controllers/user.controller");
+
+
+// router.get("/login",  isAuthenticated, loginGet)x
+router.post("/login", validateAndSanitizeLogin ,login);
+
+// router.get("/register",  isAuthenticated , registerGet)
+router.post("/register" , validateAndSanitizeRegister, register);
 
 router.get("/:id", findIt);
 
