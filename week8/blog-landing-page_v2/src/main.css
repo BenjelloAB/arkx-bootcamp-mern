@@ -1,0 +1,34 @@
+.join{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#root{
+    height: 100vh;
+    position: relative;
+
+
+}
+#form-post{
+    z-index: 3;
+}
+
+.overlay{
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    filter: blur(36px);
+    backdrop-filter: blur(1px);
+    -webkit-filter: blur(36px);
+}
+body{
+    overflow-x:hidden ;
+    /* position: relative; */
+}
+
+body.active{
+    overflow-y: hidden;
+}
